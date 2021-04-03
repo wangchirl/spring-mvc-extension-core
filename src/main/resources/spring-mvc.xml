@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc ="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- spring mvc 扫描包 -->
+    <context:component-scan base-package="com.shadow.application.controller" />
+
+    <!-- enable-matrix-variables="true" 支持 @MatrixVariable -->
+    <mvc:annotation-driven enable-matrix-variables="true">
+        <mvc:message-converters> <!-- 消息转换器 -->
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 拦截器配置 -->
+    <mvc:interceptors>
+        <bean class="com.shadow.application.interceptor.TestInterceptor" />
+        <bean class="com.shadow.application.interceptor.LoginInterceptor" />
+    </mvc:interceptors>
+
+    <!-- 配置监听器 -->
+    <bean class="com.shadow.application.listener.RequestEndListener" />
+
+    <!-- 视图处理器 -->
+    <mvc:view-resolvers>
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="prefix" value="/WEN-INF/jsps/" />
+            <property name="suffix" value=".jsp" />
+        </bean>
+    </mvc:view-resolvers>
+
+    <!-- 文件上传配置 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--上传文件的最大大小，单位为字节 -->
+        <property name="maxUploadSize" value="17367648787"></property>
+        <!-- 上传文件的编码 -->
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>
+</beans>

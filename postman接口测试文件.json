@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "482cd7b6-cf71-4a08-99f3-6110fbe6dd6b",
+		"name": "springmvc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "父子容器验证",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@PathVariable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/path/variable/shadow/18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"path",
+						"variable",
+						"shadow",
+						"18"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@MatrixVariable",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/matrix/variable/shadow;age=18;email=438111969@qq.coms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"matrix",
+						"variable",
+						"shadow;age=18;email=438111969@qq.coms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@RequestParam",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/request/param?name=shadow&age=18",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"request",
+						"param"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "shadow"
+						},
+						{
+							"key": "age",
+							"value": "18"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@RequestHeader",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/request/header",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"request",
+						"header"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@CookieValue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/cookie/value",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"cookie",
+						"value"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@ModelAttribute-GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/model/attribute?name=shadow&age=18&email=438111969@qq.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"model",
+						"attribute"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "shadow"
+						},
+						{
+							"key": "age",
+							"value": "18"
+						},
+						{
+							"key": "email",
+							"value": "438111969@qq.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@ModelAttribute-POST",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"shadow\",\r\n    \"age\":18,\r\n    \"email\":\"438111969@qq.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/model/attribute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"model",
+						"attribute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@SessionAttribute",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/session/attribute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"session",
+						"attribute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@RequestAttribute",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/request/attribute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"request",
+						"attribute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "文件上传请求",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/E:/工作第一年/Note/tomcat参数配置.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/multipart/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"multipart",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "@RequestBody",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"shadow\",\r\n    \"age\":18,\r\n    \"email\":\"438111969@qq.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/request/body",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"request",
+						"body"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HttpEntity<T>",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"shadow\",\r\n    \"age\":18,\r\n    \"email\":\"438111969@qq.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/spring_mvc_extension_core_war_exploded/http/entity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"spring_mvc_extension_core_war_exploded",
+						"http",
+						"entity"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
