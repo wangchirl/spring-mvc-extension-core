@@ -113,9 +113,9 @@
 
 **9、总结图**
 
-  ![](./Spring MVC.png)
+  ![Spring MVC](./Spring MVC.png)
 
-  ![](./传统Spring MVC项目启动流程及jar启动流程.png)
+  ![传统Spring MVC项目启动流程及jar启动流程](./传统Spring MVC项目启动流程及jar启动流程.png)
 
 
 ### 三、Spring MVC 项目配置
@@ -226,7 +226,7 @@
 ```
 
 #### 2、javaConfig 版本
-**1、配置 web.xml **
+**1、配置 web.xml**
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -246,7 +246,7 @@
     </listener>
 </web-app>
 ```
-**2、编写 MvcConfig.java **
+**2、编写 MvcConfig.java**
 ```java
 @EnableWebMvc
 @Configuration
