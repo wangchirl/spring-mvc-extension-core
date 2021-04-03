@@ -93,29 +93,29 @@
 
 >      ⑥ 核心方法 doDispatch() 进行请求处理
 
->>          <font color=green>1、检查是否文件上传请求</font>
+>>          1、检查是否文件上传请求
 
->>          <font color=red>2、根据请求从 mappingRegistry 变量中获取到真正的 handler（HandlerMethod） 及其 拦截器 interceptors 集合，组合成 HandlerExecutionChain </font>
+>>          2、根据请求从 mappingRegistry 变量中获取到真正的 handler（HandlerMethod） 及其 拦截器 interceptors 集合，组合成 HandlerExecutionChain 
 
->>          <font color=red>3、根据 handler 从 handlerAdapters 中选出合适的 HandlerAdapter （RequestMappingHandlerAdapter）</font>
+>>          3、根据 handler 从 handlerAdapters 中选出合适的 HandlerAdapter （RequestMappingHandlerAdapter）
 
->>          <font color=blue>4、执行拦截器的 preHandle() 方法</font>
+>>          4、执行拦截器的 preHandle() 方法
 
->>          <font color=red>5、根据找出来的 HandlerAdapter 适配器进行处理，在请求我们的方法前，进行一系列的参数处理，然后真正请求我们的方法，后续再对返回值进行处理，最终返回 ModelAndView 对象</font>
+>>          5、根据找出来的 HandlerAdapter 适配器进行处理，在请求我们的方法前，进行一系列的参数处理，然后真正请求我们的方法，后续再对返回值进行处理，最终返回 ModelAndView 对象
 
->>          <font color=green>6、如果没有视图名，则设置默认的视图名</font>
+>>          6、如果没有视图名，则设置默认的视图名
 
->>          <font color=blue>7、执行拦截器的 postHandle() 方法</font>
+>>          7、执行拦截器的 postHandle() 方法
 
->>          <font color=red>8、视图解析器对 ModelAndView 对象进行处理，然后渲染视图，并执行拦截器的 afterCompletion() 方法</font>
+>>          8、视图解析器对 ModelAndView 对象进行处理，然后渲染视图，并执行拦截器的 afterCompletion() 方法
 
 >     ⑦ 回到 processRequest() 方法，发布请求已处理事件 ServletRequestHandledEvent，完成整个请求过程
 
 ### 二、总结图
 
-![](Spring MVC.png)
+  ![](./Spring MVC.png)
 
-![](传统Spring MVC项目启动流程及jar启动流程.png)
+  ![](./传统Spring MVC项目启动流程及jar启动流程.png)
 
 
 ### 三、Spring MVC 项目配置
