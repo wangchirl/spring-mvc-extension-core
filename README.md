@@ -56,6 +56,7 @@
 **6、<font color=blue>HandlerMapping 之 RequestMappingHandlerMapping 的解析过程</font>**
 * RequestMappingHandlerMapping 的继承关系
 > ① ApplicationContextAware -> setApplicationContext()
+
 > ② InitializingBean -> <font color=blue>afterPropertiesSet()</font>
 * 解析 @Controller 与 @RequestMapping 的过程
 > <font color=blue>在 InitializingBean 的回调方法 afterPropertiesSet() 中回调其父类的 super.afterPropertiesSet() 方法，找到 Spring MVC 容器中存的 beanName，然后根据
@@ -65,11 +66,15 @@
 **7、<font color=green>HandlerAdapter 之 RequestMappingHandlerAdapter 的初始化过程</font>**
 * RequestMappingHandlerAdapter 的继承关系
 > ① ApplicationContextAware -> setApplicationContext()
+
 > ② BeanFactory -> setBeanFactory()
+
 > ③ InitializingBean -> <font color=green>afterPropertiesSet()</font>
 * 在 InitializingBean 的回调方法 afterPropertiesSet() 中设置各种请求参数处理器及返回值处理器
 > ① argumentResolvers （请求参数处理器 HandlerMethodArgumentResolver）
+
 > ② iniBinderArgumentResolvers （请求参数绑定器 HandlerMethodArgumentResolver）
+
 > ③ returnValueHandlers（返回值处理器 HandlerMethodReturnValueHandler）
 
 
@@ -77,26 +82,40 @@
 **8、Spring MVC 处理请求的过程（DispatcherServlet）**
 > 标准的 Servlet 处理请求的方式 
       ① 调用 service() 方法 => HttpServlet#service()
-      ② 调用 FrameworkServlet#service() 方法，判断是否 PATCH 请求类型
-      ③ 不是 PATCH 请求类型，回调父类 HttpServlet#service() 方法，判断具体的请求类型（GET/POST...）
-      ④ 回到 FrameworkServlet 继续处理不同的请求，最终调用 FrameworkServlet#processRequest() 方法
-      ⑤ 在 processRequest 方法中继续调用 doService() 方法继续后续处理，最终调用 doDispatch() 方法
-      ⑥ 核心方法 doDispatch() 进行请求处理
-          <font color=green>1、检查是否文件上传请求</font>
-          <font color=red>2、根据请求从 mappingRegistry 变量中获取到真正的 handler（HandlerMethod） 及其 拦截器 interceptors 集合，组合成 HandlerExecutionChain </font>
-          <font color=red>3、根据 handler 从 handlerAdapters 中选出合适的 HandlerAdapter （RequestMappingHandlerAdapter）</font>
-          <font color=blue>4、执行拦截器的 preHandle() 方法</font>
-          <font color=red>5、根据找出来的 HandlerAdapter 适配器进行处理，在请求我们的方法前，进行一系列的参数处理，然后真正请求我们的方法，后续再对返回值进行处理，最终返回 ModelAndView 对象</font>
-          <font color=green>6、如果没有视图名，则设置默认的视图名</font>
-          <font color=blue>7、执行拦截器的 postHandle() 方法</font>
-          <font color=red>8、视图解析器对 ModelAndView 对象进行处理，然后渲染视图，并执行拦截器的 afterCompletion() 方法</font>
-     ⑦ 回到 processRequest() 方法，发布请求已处理事件 ServletRequestHandledEvent，完成整个请求过程
+
+>      ② 调用 FrameworkServlet#service() 方法，判断是否 PATCH 请求类型
+
+>      ③ 不是 PATCH 请求类型，回调父类 HttpServlet#service() 方法，判断具体的请求类型（GET/POST...）
+
+>      ④ 回到 FrameworkServlet 继续处理不同的请求，最终调用 FrameworkServlet#processRequest() 方法
+
+>      ⑤ 在 processRequest 方法中继续调用 doService() 方法继续后续处理，最终调用 doDispatch() 方法
+
+>      ⑥ 核心方法 doDispatch() 进行请求处理
+
+>>          <font color=green>1、检查是否文件上传请求</font>
+
+>>          <font color=red>2、根据请求从 mappingRegistry 变量中获取到真正的 handler（HandlerMethod） 及其 拦截器 interceptors 集合，组合成 HandlerExecutionChain </font>
+
+>>          <font color=red>3、根据 handler 从 handlerAdapters 中选出合适的 HandlerAdapter （RequestMappingHandlerAdapter）</font>
+
+>>          <font color=blue>4、执行拦截器的 preHandle() 方法</font>
+
+>>          <font color=red>5、根据找出来的 HandlerAdapter 适配器进行处理，在请求我们的方法前，进行一系列的参数处理，然后真正请求我们的方法，后续再对返回值进行处理，最终返回 ModelAndView 对象</font>
+
+>>          <font color=green>6、如果没有视图名，则设置默认的视图名</font>
+
+>>          <font color=blue>7、执行拦截器的 postHandle() 方法</font>
+
+>>          <font color=red>8、视图解析器对 ModelAndView 对象进行处理，然后渲染视图，并执行拦截器的 afterCompletion() 方法</font>
+
+>     ⑦ 回到 processRequest() 方法，发布请求已处理事件 ServletRequestHandledEvent，完成整个请求过程
 
 ### 二、总结图
 
-![](./Spring MVC.png)
+![](Spring MVC.png)
 
-![](./传统Spring MVC项目启动流程及jar启动流程.png)
+![](传统Spring MVC项目启动流程及jar启动流程.png)
 
 
 ### 三、Spring MVC 项目配置
