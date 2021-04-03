@@ -111,7 +111,7 @@
 
 >     ⑦ 回到 processRequest() 方法，发布请求已处理事件 ServletRequestHandledEvent，完成整个请求过程
 
-### 二、总结图
+**9、总结图**
 
   ![](./Spring MVC.png)
 
