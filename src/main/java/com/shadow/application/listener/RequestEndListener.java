@@ -15,4 +15,9 @@ public class RequestEndListener {
     public void requested(RequestHandledEvent event) {
         ConsolePrinter.printlnCyan("请求处理完成监听器 SessionId ：" + event.getSessionId());
     }
+
+    @EventListener
+    public void myEvent(MyEvent event) {
+        ConsolePrinter.printlnCyan("收到发布的 MyEvent 事件...");
+    }
 }

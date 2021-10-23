@@ -1,6 +1,7 @@
 package com.shadow.application.controller;
 
 import com.shadow.application.entity.User;
+import com.shadow.application.listener.MyEvent;
 import com.shadow.application.response.R;
 import com.shadow.application.service.TestService;
 import com.shadow.utils.ConsolePrinter;
@@ -39,6 +40,8 @@ public class TestController {
             .setPhone("110")
             .setAddress("湖南省-张家界市");
         testService.save(user);
+        // 发布事件
+        applicationContext.publishEvent(new MyEvent(null));
         return R.ok().put("data","保存成功");
     }
 
@@ -227,8 +230,8 @@ public class TestController {
      */
     @PostMapping("/http/entity")
     public R httpEntity(HttpEntity<User> userHttpEntity) {
-        ConsolePrinter.printlnCyan("HttpEntity params : " + userHttpEntity);
-        return R.ok().put("data",userHttpEntity);
+        ConsolePrinter.printlnCyan("HttpEntity params : " + userHttpEntity.getBody());
+        return R.ok().put("data",userHttpEntity.getBody());
     }
 
 }

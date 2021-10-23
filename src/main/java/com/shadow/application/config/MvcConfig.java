@@ -24,9 +24,9 @@ import java.util.List;
  * @create 2021-04-03
  * @description 配置的方式
  */
-@EnableWebMvc
-@Configuration
-@ComponentScan("com.shadow.application")
+//@EnableWebMvc
+//@Configuration
+//@ComponentScan("com.shadow.application")
 public class MvcConfig implements WebMvcConfigurer {
 
     /**
